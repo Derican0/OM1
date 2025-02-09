@@ -1,24 +1,24 @@
 import asyncio
 
-from inputs.base import Sensor
+from inputs.base import SensorOutput
 
 
 class InputOrchestrator:
     """
     Manages and coordinates multiple input sources.
 
-    Handles concurrent processing of multiple Sensor instances,
+    Handles concurrent processing of multiple SensorOutput instances,
     orchestrating their data flows.
 
     Parameters
     ----------
-    inputs : list[Sensor]
+    inputs : list[SensorOutput]
         List of input sources to manage
     """
 
-    inputs: list[Sensor]
+    inputs: list[SensorOutput]
 
-    def __init__(self, inputs: list[Sensor]):
+    def __init__(self, inputs: list[SensorOutput]):
         """
         Initialize InputOrchestrator instance with input sources.
         """
@@ -35,13 +35,13 @@ class InputOrchestrator:
         ]
         await asyncio.gather(*input_tasks)
 
-    async def _listen_to_input(self, input: Sensor) -> None:
+    async def _listen_to_input(self, input: SensorOutput) -> None:
         """
         Process events from a single input source.
 
         Parameters
         ----------
-        input : Sensor
+        input : SensorOutput
             Input source to listen to
         """
         async for event in input.listen():

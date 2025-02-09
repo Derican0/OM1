@@ -6,7 +6,7 @@ from typing import Optional
 
 import requests
 
-from inputs.base import SensorConfig
+from inputs.base import SensorOutputConfig
 from inputs.base.loop import FuserInput
 from providers.io_provider import IOProvider
 
@@ -126,7 +126,7 @@ class GovernanceEthereum(FuserInput[float]):
             logging.error(f"Decoding error: {e}")
             return None
 
-    def __init__(self, config: SensorConfig = SensorConfig()):
+    def __init__(self, config: SensorOutputConfig = SensorOutputConfig()):
         """
         Initialize GovernanceEthereum instance.
         """

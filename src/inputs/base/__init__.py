@@ -5,9 +5,9 @@ R = T.TypeVar("R")
 
 
 @dataclass
-class SensorConfig:
+class SensorOutputConfig:
     """
-    Configuration class for Sensor implementations.
+    Configuration class for SensorOutput implementations.
 
     Parameters
     ----------
@@ -21,9 +21,9 @@ class SensorConfig:
             setattr(self, key, value)
 
 
-class Sensor(T.Generic[R]):
+class SensorOutput(T.Generic[R]):
     """
-    Base class for all sensors. Provides the interface for converting raw inputs
+    Base class for all sensor outputs aka agent inputs. Provides the interface for converting raw inputs
     into text format for processing by the fuser.
 
     Type Parameters
@@ -32,9 +32,9 @@ class Sensor(T.Generic[R]):
         The raw input type that this agent handles
     """
 
-    def __init__(self, config: SensorConfig):
+    def __init__(self, config: SensorOutputConfig):
         """
-        Initialize an Sensor instance.
+        Initialize an SensorOutput instance.
         """
         self.config = config
         pass

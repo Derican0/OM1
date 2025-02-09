@@ -5,7 +5,7 @@ from typing import AsyncIterator, List, Optional
 
 import aiohttp
 
-from inputs.base import SensorConfig
+from inputs.base import SensorOutputConfig
 from inputs.base.loop import FuserInput
 
 
@@ -14,17 +14,17 @@ class TwitterInput(FuserInput[str]):
 
     def __init__(
         self,
-        config: Optional[SensorConfig] = None,
+        config: Optional[SensorOutputConfig] = None,
     ):
         """Initialize TwitterInput with configuration.
 
         Parameters
         ----------
-        config : Optional[SensorConfig]
+        config : Optional[SensorOutputConfig]
             Configuration object from the runtime
         """
         if config is None:
-            config = SensorConfig()
+            config = SensorOutputConfig()
 
         super().__init__(config)
 
