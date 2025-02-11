@@ -1,0 +1,116 @@
+{
+  "theme": "mint",
+  "name": "OpenMind",
+  "favicon": "/assets/favicon.png",
+  "colors": {
+    "primary": "#16A34A",
+    "light": "#07C983",
+    "dark": "#15803D"
+  },
+  "styling": {
+    "codeblocks": "system"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quick_start"
+            ]
+          },
+          {
+            "group": "Development",
+            "pages": [
+              "development/guide",
+              "development/architecture"
+            ]
+          },
+          {
+            "group": "Examples",
+            "pages": [
+              "examples/conversation",
+              "examples/llm_models",
+              "examples/smart_toy"
+            ]
+          },
+          {
+            "group": "Robotics",
+            "pages": [
+              "robotics/asimov_governance",
+              "robotics/unitree_robotics",
+              "robotics/coinbase_hackathon"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "API Reference",
+            "pages": [
+              "api-reference/introduction",
+              "api-reference/authentication",
+              "api-reference/api-price"
+            ]
+          },
+          {
+            "group": "Core Endpoints",
+            "pages": [
+              "api-reference/endpoints/llm",
+              "api-reference/endpoints/riva_tts"
+            ]
+          },
+          {
+            "group": "Core Websocket Endpoints",
+            "pages": [
+              "api-reference/endpoints/vila_vlm",
+              "api-reference/endpoints/riva_asr"
+            ]
+          }
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Home",
+          "href": "https://www.openmind.org",
+          "icon": "house"
+        },
+        {
+          "anchor": "Research",
+          "href": "https://www.openmind.org/research.html",
+          "icon": "book"
+        }
+      ]
+    }
+  },
+  "logo": {
+    "light": "/assets/OpenMind_black.svg",
+    "dark": "/assets/OpenMind_white.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:hello@openmind.org"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Sign Up",
+      "href": "https://portal.openmind.org"
+    }
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/openmind_agi",
+      "github": "https://github.com/openmindagi"
+    }
+  }
+}
