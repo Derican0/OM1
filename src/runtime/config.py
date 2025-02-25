@@ -9,7 +9,6 @@ from actions.base import AgentAction
 from inputs import load_input
 from inputs.base import Sensor, SensorConfig
 from llm import LLM, LLMConfig, load_llm
-from llm.output_model import CortexOutputModel
 from runtime.robotics import load_unitree
 from simulators import load_simulator
 from simulators.base import Simulator, SimulatorConfig
@@ -107,7 +106,7 @@ def load_config(config_name: str) -> RuntimeConfig:
                     raw_config["cortex_llm"].get("config", {}), g_api_key, g_ut_eth
                 )
             ),
-            output_model=CortexOutputModel,
+            # output_model=CortexOutputModel,
         ),
         "simulators": [
             load_simulator(simulator["type"])(

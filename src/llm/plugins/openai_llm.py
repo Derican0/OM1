@@ -27,7 +27,7 @@ class OpenAILLM(LLM[R]):
         will be used.
     """
 
-    def __init__(self, output_model: T.Type[R], config: LLMConfig = LLMConfig()):
+    def __init__(self, config: LLMConfig = LLMConfig()):
         """
         Initialize the OpenAI LLM instance.
 
@@ -38,7 +38,7 @@ class OpenAILLM(LLM[R]):
         config : LLMConfig, optional
             Configuration settings for the LLM.
         """
-        super().__init__(output_model, config)
+        super().__init__(config)
 
         if not config.api_key:
             raise ValueError("config file missing api_key")
@@ -82,13 +82,26 @@ class OpenAILLM(LLM[R]):
             # this saves all the input information
             self.io_provider.set_llm_prompt(prompt)
 
+            messages = [
+                {
+                    "role": "system",
+                    "content": f"Respond with valid JSON matching this schema: {self._output_model.model_json_schema()}",
+                },
+                *messages,
+                {
+                    "role": "user",
+                    "content": prompt,
+                },
+            ]
+
             response = await self._client.beta.chat.completions.parse(
                 model=self._config.model,
-                messages=[*messages, {"role": "user", "content": prompt}],
-                response_format=self._output_model,
+                messages=messages,
+                response_format={"type": "json_object"},
             )
 
             message_content = response.choices[0].message.content
+            print(message_content)
             self.io_provider.llm_end_time = time.time()
 
             try:

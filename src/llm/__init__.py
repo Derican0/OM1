@@ -7,6 +7,8 @@ from pydantic import BaseModel
 
 from providers.io_provider import IOProvider
 
+from .output_model import CommandBuilder
+
 R = T.TypeVar("R")
 
 
@@ -47,12 +49,23 @@ class LLM(T.Generic[R]):
 
     """
 
-    def __init__(self, output_model: T.Type[R], config: LLMConfig = LLMConfig()):
+    def __init__(self, config: LLMConfig = LLMConfig()):
         # Set up the LLM configuration
         self._config = config
 
+        command_specs = {
+            "move": {
+                "action": None,
+            },
+            "speak": {"sentence": None},  # Any string
+            "emotion": {"action": None},
+        }
+
+        # Create a Commands model with these specifications
+        _output_model = CommandBuilder.create_commands_model(command_specs)
+
         # Set up the output model
-        self._output_model = output_model
+        self._output_model = _output_model
 
         # Set up the IO provider
         self.io_provider = IOProvider()
